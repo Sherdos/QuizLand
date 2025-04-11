@@ -174,7 +174,6 @@ public class MenuPage {
             try (PrintWriter writer = new PrintWriter(file)) {
                 writer.println("title,description,answer,points,quiz_id");
                 for (Task task : quiz.getTasks()) {
-                    System.out.println(task);
                     writer.printf("\"%s\",\"%s\",\"%s\",%d\n",
                             task.getTitle(), task.getDescription(), task.getAnswer(), task.getPoints());
                 }
@@ -217,7 +216,6 @@ public class MenuPage {
                         String description = parts[2].replace("\"", "").trim();
                         String answer = parts[3].replace("\"", "").trim();
                         int points = Integer.parseInt(parts[4].trim());
-                        System.out.println(String.format("%s, %s, %s, %d, %d",title,description, answer, points, newQuiz.getId()));
                         Task task = Task.add(title, description, answer, points, newQuiz.getId());
                         newQuiz.addTask(task);
                     }

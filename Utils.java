@@ -69,20 +69,6 @@ class Utils{
                 stmt.execute(createUserTable);
                 stmt.execute(createQuizTable);
                 stmt.execute(createTaskTable);
-
-                // // 3. Insert sample data
-                // String insert = "INSERT INTO questions (question, answer) VALUES (?, ?)";
-                // PreparedStatement pstmt = conn.prepareStatement(insert);
-                // pstmt.setString(1, "What is the capital of France?");
-                // pstmt.setString(2, "Paris");
-                // pstmt.executeUpdate();
-
-                // // 4. Read data
-                // ResultSet rs = stmt.executeQuery("SELECT * FROM questions");
-                // while (rs.next()) {
-                //     System.out.println("Q: " + rs.getString("question"));
-                //     System.out.println("A: " + rs.getString("answer"));
-                // }
             }
         } catch (SQLException e) {
             System.out.println("DB error: " + e.getMessage());
