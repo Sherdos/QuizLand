@@ -98,7 +98,7 @@ public class MenuPage {
             quizCard.add(startQuizButton);
             quizCard.add(Box.createVerticalStrut(10));
 
-            if (Utils.session != null && Utils.session.equals(q.getAuthor())) {
+            if (Utils.getSession() != null && Utils.getSession().equals(q.getAuthor())) {
                 quizCard.add(editQuizButton);
                 quizCard.add(removeQuizButton);
                 quizCard.add(exportButton);

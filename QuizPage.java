@@ -1,5 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
+import java.sql.*;
+import java.util.*;
+import java.time.LocalDateTime;
 
 class QuizPage{
 
@@ -114,6 +118,7 @@ class QuizPage{
         if (this.currentQuiz.isCompleted()) {
             this.frame.dispose();
             JOptionPane.showMessageDialog(null, String.format("Congratulations !!! You get %d/%d ", this.currentQuiz.checkAnswers(),this.currentQuiz.numberOfTasks()), "Quiz Completed", JOptionPane.PLAIN_MESSAGE);
+            Utils.logActivityToFile(Utils.getSession(), "solved task: " + this.currentQuiz.getTitle(), this.currentQuiz.checkAnswers(),this.currentQuiz.numberOfTasks());
 
         }
     }

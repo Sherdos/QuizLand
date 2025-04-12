@@ -5,6 +5,7 @@ import java.util.*;
 import java.io.*;
 import java.nio.file.*;
 import java.util.stream.Stream;
+import java.time.LocalDateTime;
 
 
 class Utils{
@@ -15,7 +16,6 @@ class Utils{
     static final Font SUBTITLE_FONT = new Font("SansSerif", Font.PLAIN, 16);
     static final Font BUTTON_FONT = new Font("SansSerif", Font.PLAIN, 14);
     static private final String filePath = "Sessions.txt";
-    static String session = getSession();
 
 
 	JFrame frame = new JFrame();
@@ -110,6 +110,16 @@ class Utils{
         } catch (IOException ex) {
             System.err.println("Error getting session: " + ex.getMessage());
             return null;
+        }
+    }
+
+    public static void logActivityToFile(String username, String action, int points, int corrects) {
+        String logLine = String.format("%s|%s|%s|%d/%d\n", LocalDateTime.now(), username, action,corrects, points);
+
+        try (FileWriter writer = new FileWriter("activity.log", true)) {
+            writer.write(logLine);
+        } catch (IOException e) {
+            System.err.println("Failed to write log: " + e.getMessage());
         }
     }
 }
